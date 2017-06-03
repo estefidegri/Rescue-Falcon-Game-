@@ -14,14 +14,14 @@ public interface Personaje {
      * el siguiente método ataca al enemigo 
      * @param enemigo enemigo 
      */
-    void atacar (Personaje enemigo); 
+    void atacar (Character enemigo); 
         //no posee public porque está usando la privacidad de la clase 
     /**
      * Cada uno tiene la capacidad de defenderse
      * @param personaje heroe o enemigo 
      */
     
-    void defender (Personaje personaje); 
+    void defender (Character personaje); 
     
     /**
      * Ambos pueden ussar habilidades.
@@ -29,14 +29,14 @@ public interface Personaje {
      * @return recuperacion
      */
     
-    int sanarse (Personaje personaje);
+    int sanarse (Character personaje);
         
     /**
      * Ambos pueden recuerar vitalidad
      * @param personaje personaje 
      * @return recuperación
      */
-    int recuperarVitalidad (Personaje personaje); 
+    int recuperarVitalidad (Character personaje); 
     
             
 }
