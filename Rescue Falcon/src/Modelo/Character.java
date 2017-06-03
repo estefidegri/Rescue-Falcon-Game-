@@ -10,15 +10,33 @@ package Modelo;
  *
  * @author Estefania
  */
-public  class Character  {
+public class Character {
 
     private int vida = 0;
     private int vitalidad = 0;
     private int agilidad = 0;
     private int ataque = 0;
     private int defensa = 0;
+    private int critico = 0;
 
-      public int getVida() {
+    
+    /**
+     * Obtiene el  critico
+     * @return 
+     */
+    public int getCritico() {
+        return critico;
+    }
+
+    /**
+     * Asigna el critico
+     * @param critico 
+     */
+    public void setCritico(int critico) {
+        this.critico = critico;
+    }
+
+    public int getVida() {
         return vida;
     }
 
@@ -34,7 +52,6 @@ public  class Character  {
         this.vitalidad = vitalidad;
     }
 
-    
     //Getter y setters 
     /**
      * @return the agilidad
@@ -94,8 +111,9 @@ public  class Character  {
     }
 
     /**
-     *Constructor default para mobs 
-     * @param personaje personaje con base en el constructor. 
+     * Constructor default para mobs
+     *
+     * @param personaje personaje con base en el constructor.
      */
     public Character(Character personaje) {
         vida = (int) (Math.random() * personaje.getVida() + 1 / 3) + personaje.getVida() * 1 / 2;
@@ -104,25 +122,20 @@ public  class Character  {
         ataque = (int) (Math.random() * personaje.getAtaque() + 1 / 3) + personaje.getAtaque() * 1 / 2;
     }
 
-    
     public void atacar(Character enemigo) {
-       
+        enemigo.setVida(this.getAtaque() - enemigo.getVida() + enemigo.getDefensa());
     }
 
-   
     public void defender(Character personaje) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
     public int sanarse(Character personaje) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
     public int recuperarVitalidad(Character personaje) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-  
 }
