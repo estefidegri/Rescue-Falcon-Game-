@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import com.sun.xml.internal.messaging.saaj.util.transform.EfficientStreamingTransformer;
+
 /**
  * clase de Personaje: aqui se realiza la implementación de la interfaz
  *
@@ -12,25 +14,41 @@ package Modelo;
  */
 public class Character {
 
+    /**
+     * @return the heroe
+     */
+    public boolean isHeroe() {
+        return heroe;
+    }
+
+    /**
+     * @param heroe the heroe to set
+     */
+    public void setHeroe(boolean heroe) {
+        this.heroe = heroe;
+    }
+
     private int vida = 0;
     private int vitalidad = 0;
     private int agilidad = 0;
     private int ataque = 0;
     private int defensa = 0;
-    private int critico = 0;
+    private float critico = 0;
+    private boolean heroe = false;
 
-    
     /**
-     * Obtiene el  critico
-     * @return 
+     * Obtiene el critico
+     *
+     * @return
      */
-    public int getCritico() {
+    public float getCritico() {
         return critico;
     }
 
     /**
      * Asigna el critico
-     * @param critico 
+     *
+     * @param critico
      */
     public void setCritico(int critico) {
         this.critico = critico;
@@ -102,12 +120,17 @@ public class Character {
      * @param vitalidad vitalidad del personaje
      * @param agilidad agilidad del personaje
      * @param ataque ataque del personaje
+     * @param defensa defensa del personaje
+     * @param heroe heroe
+     * @param critico potenciar ataque
      */
-    public Character(int vida, int vitalidad, int agilidad, int ataque) {
+    public Character(int vida, int vitalidad, int agilidad, int ataque, int defensa, boolean heroe, float critico) {
         this.vida = vida;
         this.vitalidad = vitalidad;
         this.agilidad = agilidad;
         this.ataque = ataque;
+        this.heroe = heroe;
+        this.critico = critico;
     }
 
     /**
@@ -120,22 +143,59 @@ public class Character {
         vitalidad = (int) (Math.random() * personaje.getVitalidad() + 1 / 3) + personaje.getVitalidad() * 1 / 2;
         agilidad = (int) (Math.random() * personaje.getAgilidad() + 1 / 3) + personaje.getAgilidad() * 1 / 2;
         ataque = (int) (Math.random() * personaje.getAtaque() + 1 / 3) + personaje.getAtaque() * 1 / 2;
+        defensa = (int) (Math.random() * personaje.getDefensa() + 1 / 3) + personaje.getDefensa() * 1 / 2;
+        heroe = false;
+        critico = (float) 1.5;
     }
 
     public void atacar(Character enemigo) {
         enemigo.setVida(this.getAtaque() - enemigo.getVida() + enemigo.getDefensa());
     }
 
+    /**
+     * Aumenta la defensa del personaje
+     *
+     * @param personaje personaje a defender
+     */
     public void defender(Character personaje) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (personaje.getDefensa() == 0) {
+            personaje.setDefensa(50);
+        }
+        personaje.setDefensa(personaje.getDefensa() + 1 / 2);
     }
 
+    /**
+     * sana al personaje si no es enemigo
+     *
+     * @param personaje personaje
+     * @return vida del personaje
+     */
     public int sanarse(Character personaje) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (personaje.isHeroe() != true) {
+            return 0;
+        }
+        personaje.setVida(personaje.getVida() + 1 / 3);
+        return personaje.getVida();
     }
 
+    /**
+     * Recupera la viitalidad si no es un enemigo
+     *
+     * @param personaje personaje
+     * @return retorna su vitalidad
+     */
     public int recuperarVitalidad(Character personaje) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (personaje.isHeroe() != true) {
+            return 0;
+
+        }
+        if (personaje.getVitalidad() == 0) {
+            personaje.setVitalidad(50);
+            return personaje.getVitalidad();
+        }
+
+        personaje.setVitalidad(personaje.getVitalidad() + 1 / 3);
+        return personaje.getVitalidad();
     }
 
 }
