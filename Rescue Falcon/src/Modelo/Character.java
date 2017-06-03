@@ -5,8 +5,6 @@
  */
 package Modelo;
 
-import com.sun.xml.internal.messaging.saaj.util.transform.EfficientStreamingTransformer;
-
 /**
  * clase de Personaje: aqui se realiza la implementación de la interfaz
  *
@@ -33,13 +31,13 @@ public class Character {
     private int agilidad = 0;
     private int ataque = 0;
     private int defensa = 0;
-    private float critico = 0;
+    private float critico = 0; //ToDo es un potenciador aleatorio
     private boolean heroe = false;
 
     /**
      * Obtiene el critico
      *
-     * @return
+     * @return el citrico
      */
     public float getCritico() {
         return critico;
@@ -48,30 +46,52 @@ public class Character {
     /**
      * Asigna el critico
      *
-     * @param critico
+     * @param critico critico
      */
     public void setCritico(int critico) {
         this.critico = critico;
     }
 
+    /**
+     * Obtiene la vida
+     *
+     * @return vida
+     */
     public int getVida() {
         return vida;
     }
 
+    /**
+     * Asigna la vida
+     *
+     * @param vida vida del personaje
+     */
     public void setVida(int vida) {
         this.vida = vida;
     }
 
+    /**
+     * Obtiene la vitalidad
+     *
+     * @return vitalidad
+     */
     public int getVitalidad() {
         return vitalidad;
     }
 
+    /**
+     * Asigna la vitalidad
+     *
+     * @param vitalidad vitalidad
+     */
     public void setVitalidad(int vitalidad) {
         this.vitalidad = vitalidad;
     }
 
-    //Getter y setters 
+    //Getter y setters
     /**
+     * Obtiene la agilidad
+     *
      * @return the agilidad
      */
     public int getAgilidad() {
@@ -79,6 +99,8 @@ public class Character {
     }
 
     /**
+     * Asigna la agilidad
+     *
      * @param agilidad the agilidad to set
      */
     public void setAgilidad(int agilidad) {
@@ -86,6 +108,8 @@ public class Character {
     }
 
     /**
+     * Obtiene el ataque
+     *
      * @return the ataque
      */
     public int getAtaque() {
@@ -93,6 +117,8 @@ public class Character {
     }
 
     /**
+     * Asigna el ataque
+     *
      * @param ataque the ataque to set
      */
     public void setAtaque(int ataque) {
@@ -100,6 +126,8 @@ public class Character {
     }
 
     /**
+     * Obtiene la defensa
+     *
      * @return the defensa
      */
     public int getDefensa() {
@@ -107,6 +135,8 @@ public class Character {
     }
 
     /**
+     * Asigna la defensa
+     *
      * @param defensa the defensa to set
      */
     public void setDefensa(int defensa) {
@@ -148,8 +178,21 @@ public class Character {
         critico = (float) 1.5;
     }
 
-    public void atacar(Character enemigo) {
-        enemigo.setVida(this.getAtaque() - enemigo.getVida() + enemigo.getDefensa());
+    /**
+     * Ataca un personaje
+     *
+     * @param enemigo enemigo a atacar
+     * @return daño
+     */
+    public int atacar(Character enemigo) {
+        int resultado = (int) ((enemigo.getDefensa()) - (this.getAtaque() * this.getCritico()));
+        if (resultado <= 0) {
+            enemigo.setVida(0);
+            return resultado;
+        }
+        enemigo.setVida(enemigo.getVida() - resultado);
+        return resultado;
+
     }
 
     /**
@@ -198,4 +241,15 @@ public class Character {
         return personaje.getVitalidad();
     }
 
+    public void ataquehielo(Character enemigo) {
+        //ToDo
+    }
+
+    public void ataqueFuego(Character enemigo) {
+        //ToDo
+    }
+
+    public void veneno(Character enemeigo) {
+        //Todo
+    }
 }
