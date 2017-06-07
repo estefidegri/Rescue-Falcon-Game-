@@ -274,9 +274,12 @@ public class Character {
     /**
      * Lanza huevos al enemigo
      * @param enemigo enemigo
+     * @return vitalidad por la mitad
      */
-    public void lanzarHuevos(Character enemigo) {
-       
+    public int lanzarHuevos(Character enemigo) {
+       this.atacar(enemigo);
+       enemigo.setVitalidad(enemigo.getVitalidadActual()-1/2);
+       return enemigo.VitalidadActual-1/2; 
     }
 
     public void disparar(Character enemigo) {
