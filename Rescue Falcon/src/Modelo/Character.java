@@ -252,4 +252,10 @@ public class Character {
     public void veneno(Character enemeigo) {
         //Todo
     }
+    public void vida (Character enemigo) {
+        
+    }
+    public void vitalidad (Character enemigo) {
+        
+    }
 }
