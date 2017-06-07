@@ -26,13 +26,43 @@ public class Character {
         this.heroe = heroe;
     }
 
+    private int vidaActual = 0;
+    private int VitalidadActual = 0;
     private int vida = 0;
     private int vitalidad = 0;
     private int agilidad = 0;
     private int ataque = 0;
     private int defensa = 0;
-    private float critico = 0; //ToDo es un potenciador aleatorio
+    private float critico = 0; 
     private boolean heroe = false;
+
+    /**
+     * @return the vidaActual
+     */
+    public int getVidaActual() {
+        return vidaActual;
+    }
+
+    /**
+     * @param vidaActual the vidaActual to set
+     */
+    public void setVidaActual(int vidaActual) {
+        this.vidaActual = vidaActual;
+    }
+
+    /**
+     * @return the VitalidadActual
+     */
+    public int getVitalidadActual() {
+        return VitalidadActual;
+    }
+
+    /**
+     * @param VitalidadActual the VitalidadActual to set
+     */
+    public void setVitalidadActual(int VitalidadActual) {
+        this.VitalidadActual = VitalidadActual;
+    }
 
     /**
      * Obtiene el critico
@@ -160,7 +190,7 @@ public class Character {
         this.agilidad = agilidad;
         this.ataque = ataque;
         this.heroe = heroe;
-        this.critico = critico;
+        this.critico = (float) (critico * Math.random()*2+1);
     }
 
     /**
@@ -241,21 +271,28 @@ public class Character {
         return personaje.getVitalidad();
     }
 
-    public void ataquehielo(Character enemigo) {
-        //ToDo
+    /**
+     * Lanza huevos al enemigo
+     * @param enemigo enemigo
+     */
+    public void lanzarHuevos(Character enemigo) {
+       
     }
 
-    public void ataqueFuego(Character enemigo) {
+    public void disparar(Character enemigo) {
         //ToDo
     }
 
     public void veneno(Character enemeigo) {
         //Todo
     }
-    public void vida (Character enemigo) {
-        
+
+    public void espadaLaser(Character enemigo) {
+
     }
-    public void vitalidad (Character enemigo) {
-        
+
+    public void lanzarGases(Character enemigo) {
+
     }
+
 }
