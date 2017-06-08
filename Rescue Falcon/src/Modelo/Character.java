@@ -1,16 +1,114 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
-/**
- * clase de Personaje: aqui se realiza la implementación de la interfaz
- *
- * @author Estefania
- */
 public class Character {
+    
+    private String nombre = "";
+    private int salud;
+    private int saludActual;
+    private int energia;
+    private int energiaActual;
+    private int defensa;
+    private int ataque;
+    private boolean heroe;
+    private boolean muerto;
+
+    /**
+     * @return the salud
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre he salud to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return the salud
+     */
+    public int getSalud() {
+        return salud;
+    }
+
+    /**
+     * @param salud the salud to set
+     */
+    public void setSalud(int salud) {
+        this.salud = salud;
+    }
+
+    /**
+     * @return the saludActual
+     */
+    public int getSaludActual() {
+        return saludActual;
+    }
+
+    /**
+     * @param saludActual the saludActual to set
+     */
+    public void setSaludActual(int saludActual) {
+        this.saludActual = saludActual;
+    }
+
+    /**
+     * @return the energia
+     */
+    public int getEnergia() {
+        return energia;
+    }
+
+    /**
+     * @param energia the energia to set
+     */
+    public void setEnergia(int energia) {
+        this.energia = energia;
+    }
+
+    /**
+     * @return the energiaActual
+     */
+    public int getEnergiaActual() {
+        return energiaActual;
+    }
+
+    /**
+     * @param energiaActual the energiaActual to set
+     */
+    public void setEnergiaActual(int energiaActual) {
+        this.energiaActual = energiaActual;
+    }
+
+    /**
+     * @return the defensa
+     */
+    public int getDefensa() {
+        return defensa;
+    }
+
+    /**
+     * @param defensa the defensa to set
+     */
+    public void setDefensa(int defensa) {
+        this.defensa = defensa;
+    }
+
+    /**
+     * @return the ataque
+     */
+    public int getAtaque() {
+        return ataque;
+    }
+
+    /**
+     * @param ataque the ataque to set
+     */
+    public void setAtaque(int ataque) {
+        this.ataque = ataque;
+    }
 
     /**
      * @return the heroe
@@ -26,276 +124,92 @@ public class Character {
         this.heroe = heroe;
     }
 
-    private int vidaActual = 0;
-    private int VitalidadActual = 0;
-    private int vida = 0;
-    private int vitalidad = 0;
-    private int agilidad = 0;
-    private int ataque = 0;
-    private int defensa = 0;
-    private float critico = 0; 
-    private boolean heroe = false;
-
     /**
-     * @return the vidaActual
+     * @return the muerto
      */
-    public int getVidaActual() {
-        return vidaActual;
+    public boolean isMuerto() {
+        return muerto;
     }
 
     /**
-     * @param vidaActual the vidaActual to set
+     * @param muerto the muerto to set
      */
-    public void setVidaActual(int vidaActual) {
-        this.vidaActual = vidaActual;
+    public void setMuerto(boolean muerto) {
+        this.muerto = muerto;
     }
 
     /**
-     * @return the VitalidadActual
-     */
-    public int getVitalidadActual() {
-        return VitalidadActual;
-    }
-
-    /**
-     * @param VitalidadActual the VitalidadActual to set
-     */
-    public void setVitalidadActual(int VitalidadActual) {
-        this.VitalidadActual = VitalidadActual;
-    }
-
-    /**
-     * Obtiene el critico
      *
-     * @return el citrico
-     */
-    public float getCritico() {
-        return critico;
-    }
-
-    /**
-     * Asigna el critico
+     * @param nombre
+     * @param salud
+     * @param mana
+     * @param defensa
+     * @param ataque
      *
-     * @param critico critico
-     */
-    public void setCritico(int critico) {
-        this.critico = critico;
-    }
-
-    /**
-     * Obtiene la vida
+     * @param heroe
      *
-     * @return vida
      */
-    public int getVida() {
-        return vida;
-    }
-
-    /**
-     * Asigna la vida
-     *
-     * @param vida vida del personaje
-     */
-    public void setVida(int vida) {
-        this.vida = vida;
-    }
-
-    /**
-     * Obtiene la vitalidad
-     *
-     * @return vitalidad
-     */
-    public int getVitalidad() {
-        return vitalidad;
-    }
-
-    /**
-     * Asigna la vitalidad
-     *
-     * @param vitalidad vitalidad
-     */
-    public void setVitalidad(int vitalidad) {
-        this.vitalidad = vitalidad;
-    }
-
-    //Getter y setters
-    /**
-     * Obtiene la agilidad
-     *
-     * @return the agilidad
-     */
-    public int getAgilidad() {
-        return agilidad;
-    }
-
-    /**
-     * Asigna la agilidad
-     *
-     * @param agilidad the agilidad to set
-     */
-    public void setAgilidad(int agilidad) {
-        this.agilidad = agilidad;
-    }
-
-    /**
-     * Obtiene el ataque
-     *
-     * @return the ataque
-     */
-    public int getAtaque() {
-        return ataque;
-    }
-
-    /**
-     * Asigna el ataque
-     *
-     * @param ataque the ataque to set
-     */
-    public void setAtaque(int ataque) {
-        this.ataque = ataque;
-    }
-
-    /**
-     * Obtiene la defensa
-     *
-     * @return the defensa
-     */
-    public int getDefensa() {
-        return defensa;
-    }
-
-    /**
-     * Asigna la defensa
-     *
-     * @param defensa the defensa to set
-     */
-    public void setDefensa(int defensa) {
+    public Character(String nombre, int salud, int mana, int defensa, int ataque, boolean heroe) {
+        this.nombre = nombre;
+        this.salud = salud;
+        this.saludActual = (int) salud;
+        this.energia = mana;
+        this.energiaActual = mana;
         this.defensa = defensa;
-    }
-
-    /**
-     * Constructor del personaje
-     *
-     * @param vida vida del personaje
-     * @param vitalidad vitalidad del personaje
-     * @param agilidad agilidad del personaje
-     * @param ataque ataque del personaje
-     * @param defensa defensa del personaje
-     * @param heroe heroe
-     * @param critico potenciar ataque
-     */
-    public Character(int vida, int vitalidad, int agilidad, int ataque, int defensa, boolean heroe, float critico) {
-        this.vida = vida;
-        this.vitalidad = vitalidad;
-        this.agilidad = agilidad;
         this.ataque = ataque;
         this.heroe = heroe;
-        this.critico = (float) (critico * Math.random()*2+1);
+        this.muerto = false;
+        
     }
 
     /**
-     * Constructor default para mobs
+     * Constructro de mobs
      *
-     * @param personaje personaje con base en el constructor.
+     * @param personaje personaje a basarse
      */
     public Character(Character personaje) {
-        vida = (int) (Math.random() * personaje.getVida() + 1 / 3) + personaje.getVida() * 1 / 2;
-        vitalidad = (int) (Math.random() * personaje.getVitalidad() + 1 / 3) + personaje.getVitalidad() * 1 / 2;
-        agilidad = (int) (Math.random() * personaje.getAgilidad() + 1 / 3) + personaje.getAgilidad() * 1 / 2;
-        ataque = (int) (Math.random() * personaje.getAtaque() + 1 / 3) + personaje.getAtaque() * 1 / 2;
-        defensa = (int) (Math.random() * personaje.getDefensa() + 1 / 3) + personaje.getDefensa() * 1 / 2;
-        heroe = false;
-        critico = (float) 1.5;
+        this.salud = (int) (personaje.getSalud() * (Math.random() + personaje.getSalud()*2 * (personaje.getSalud()*1 / 2)));
+        this.saludActual = this.salud;
+        this.energia = (int) (personaje.getEnergia() * Math.random() + 2 * 1 / 2);
+        this.energiaActual = this.energia;
+        this.defensa = (int) (personaje.getDefensa() * Math.random() + 2 * 1 / 2);
+        this.ataque = (int) (personaje.getAtaque() * Math.random() + 2 * 1 / 2);
+        this.heroe = false;
+        this.muerto = false;
+        
     }
-
-    /**
-     * Ataca un personaje
-     *
-     * @param enemigo enemigo a atacar
-     * @return daño
-     */
-    public int atacar(Character enemigo) {
-        int resultado = (int) ((enemigo.getDefensa()) - (this.getAtaque() * this.getCritico()));
-        if (resultado <= 0) {
-            enemigo.setVida(0);
-            return resultado;
+    
+    public int atacar(Character atacado) {
+        
+        if (atacado.isHeroe() == false) {
+            if (atacado.isMuerto() == false && this.isMuerto() == false) {
+                
+                int resultado = (int) ((Math.random()*this.getAtaque() + 1/2 * this.getAtaque())+this.getAtaque()) ;
+                System.out.println("El ataque fue de " + resultado + " pero " + atacado.getNombre() + " resistio " + atacado.getDefensa());
+                
+                
+                atacado.setSaludActual((int) (atacado.getSaludActual() - (resultado - atacado.getDefensa())));
+                System.out.println("La salud de" + atacado.getNombre() + "  fue de " + atacado.getSaludActual());
+                
+            }
+            return this.getAtaque();
         }
-        enemigo.setVida(enemigo.getVida() - resultado);
-        return resultado;
-
+        
+        return 0;
     }
-
-    /**
-     * Aumenta la defensa del personaje
-     *
-     * @param personaje personaje a defender
-     */
-    public void defender(Character personaje) {
-        if (personaje.getDefensa() == 0) {
-            personaje.setDefensa(50);
-        }
-        personaje.setDefensa(personaje.getDefensa() + 1 / 2);
+    
+    public int sanarIndividual(Character amigo) {
+      
+            if (amigo.isMuerto() == false) {
+                amigo.setSaludActual((int) (amigo.getSaludActual() * Math.random()+ amigo.getSaludActual() * 1) + amigo.getSaludActual()* 1/2 );
+                System.out.println(this.nombre + " ha curado a " + amigo.getNombre() +" y su nueva salud es de "+ amigo.getSaludActual());
+                return amigo.getSaludActual();
+            }
+            
+            System.out.println("El personaje " + amigo.getNombre() + " es un enemigo");
+        
+        
+        return 0;
     }
-
-    /**
-     * sana al personaje si no es enemigo
-     *
-     * @param personaje personaje
-     * @return vida del personaje
-     */
-    public int sanarse(Character personaje) {
-        if (personaje.isHeroe() != true) {
-            return 0;
-        }
-        personaje.setVida(personaje.getVida() + 1 / 3);
-        return personaje.getVida();
-    }
-
-    /**
-     * Recupera la viitalidad si no es un enemigo
-     *
-     * @param personaje personaje
-     * @return retorna su vitalidad
-     */
-    public int recuperarVitalidad(Character personaje) {
-        if (personaje.isHeroe() != true) {
-            return 0;
-
-        }
-        if (personaje.getVitalidad() == 0) {
-            personaje.setVitalidad(50);
-            return personaje.getVitalidad();
-        }
-
-        personaje.setVitalidad(personaje.getVitalidad() + 1 / 3);
-        return personaje.getVitalidad();
-    }
-
-    /**
-     * Lanza huevos al enemigo
-     * @param enemigo enemigo
-     * @return vitalidad por la mitad
-     */
-    public int lanzarHuevos(Character enemigo) {
-       this.atacar(enemigo);
-       enemigo.setVitalidad(enemigo.getVitalidadActual()-1/2);
-       return enemigo.VitalidadActual-1/2; 
-    }
-
-    public void disparar(Character enemigo) {
-        //ToDo
-    }
-
-    public void veneno(Character enemeigo) {
-        //Todo
-    }
-
-    public void espadaLaser(Character enemigo) {
-
-    }
-
-    public void lanzarGases(Character enemigo) {
-
-    }
-
+    
 }
