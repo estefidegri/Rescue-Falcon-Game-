@@ -180,7 +180,7 @@ public class Character {
     }
     
     public int atacar(Character atacado) {
-        
+        //ToDO corregir
         if (atacado.isHeroe() == false) {
             if (atacado.isMuerto() == false && this.isMuerto() == false) {
                 
@@ -199,7 +199,7 @@ public class Character {
     }
     
     public int sanarIndividual(Character amigo) {
-      
+            //ToDO Corregir Sanacion, implementar gasto de energia
             if (amigo.isMuerto() == false) {
                 amigo.setSaludActual((int) (amigo.getSaludActual() * Math.random()+ amigo.getSaludActual() * 1) + amigo.getSaludActual()* 1/2 );
                 System.out.println(this.nombre + " ha curado a " + amigo.getNombre() +" y su nueva salud es de "+ amigo.getSaludActual());
@@ -210,6 +210,10 @@ public class Character {
         
         
         return 0;
+       
     }
+    
+    
+    
     
 }
