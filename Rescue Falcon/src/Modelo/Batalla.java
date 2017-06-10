@@ -11,6 +11,7 @@ package Modelo;
  */
 public class Batalla {
 
+   
     Character[] heroes = new Character[5];
     Character[] bestiario = new Character[15];
 
@@ -60,8 +61,51 @@ public class Batalla {
         }
         return energiaGrupal;
     }
-    
-    
-    
+
+
+    /**
+     * 
+     * @param heroes
+     * @param enemigos
+     * @return 
+     */
+    public Character[] atacarPrimero(Character[] heroes, Character[] enemigos) {
+        int agilidadEnemigos = 0, agilidadHeroes = 0;
+        for (Character enemigo : enemigos) {
+            agilidadEnemigos = +enemigo.getAgilidad();
+        }
+        for (Character heroe : heroes) {
+            agilidadHeroes = +heroe.getAgilidad();
+        }
+
+        if (agilidadEnemigos > agilidadHeroes) {
+            ataqueAutomatico(enemigos, heroes);
+            return enemigos;
+        }
+         return heroes;
+        
+        
+    }
+
+    /**
+     *
+     * @param atacante
+     * @param atacado
+     * @return
+     */
+    //ToDo Mejorar ataque.
+    public int ataqueAutomatico(Character[] atacante, Character[] atacado) {
+        int resultado;
+        int antes = vidaColectiva(atacado);
+        for (Character atacante1 : atacante) {
+            for (Character atacado1 : atacado) {
+                atacante1.atacar(atacado1);
+            }
+        }
+        int despues = vidaColectiva(atacado);
+        resultado = antes - despues;
+        return resultado;
+    }
 
 }
+
