@@ -22,7 +22,7 @@ public class Batalla {
      * @return
      */
     private int atacarGrupal(Character atacante, Character[] matrizEnemigos) {
-        int antes, despues, resultado = 0;
+        int antes, despues, resultado;
         antes = vidaColectiva(matrizEnemigos);
         for (Character enemigo : matrizEnemigos) {
             if (atacante.isHeroe() != enemigo.isHeroe()) {

@@ -13,9 +13,27 @@ public class Character {
     private int energia;
     private int energiaActual;
     private int defensa;
+    private int agilidad;
     private int ataque;
     private boolean heroe;
     private boolean muerto;
+
+    /**
+     * 
+     * @param agilidad 
+     */
+    public void setAgilidad(int agilidad) {
+        this.agilidad = agilidad;
+
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    public int getAgilidad() {
+        return agilidad;
+    }
 
     /**
      * @return the salud
