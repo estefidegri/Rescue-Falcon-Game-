@@ -11,7 +11,6 @@ package Modelo;
  */
 public class Batalla {
 
-   
     Character[] heroes = new Character[5];
     Character[] bestiario = new Character[15];
 
@@ -42,7 +41,7 @@ public class Batalla {
     private int vidaColectiva(Character[] matrizEquipo) {
         int saludGrupal = 0;
         for (Character character : matrizEquipo) {
-            saludGrupal = +character.getSaludActual();
+            saludGrupal += character.getSaludActual();
         }
 
         return saludGrupal;
@@ -56,35 +55,31 @@ public class Batalla {
     private int energiaColectiva(Character[] matrizEquipo1) {
         int energiaGrupal = 0;
         for (Character character : matrizEquipo1) {
-            energiaGrupal = +character.getEnergiaActual();
+            energiaGrupal += character.getEnergiaActual();
 
         }
         return energiaGrupal;
     }
 
-
     /**
-     * 
+     *
      * @param heroes
      * @param enemigos
-     * @return 
+     * @return
      */
     public Character[] atacarPrimero(Character[] heroes, Character[] enemigos) {
-        int agilidadEnemigos = 0, agilidadHeroes = 0;
-        for (Character enemigo : enemigos) {
-            agilidadEnemigos = +enemigo.getAgilidad();
-        }
-        for (Character heroe : heroes) {
-            agilidadHeroes = +heroe.getAgilidad();
-        }
 
-        if (agilidadEnemigos > agilidadHeroes) {
+        if (agiliadColectiva(heroes) < agiliadColectiva(enemigos)) {
+            System.out.println("Los enemigos atacan primero");
+
             ataqueAutomatico(enemigos, heroes);
             return enemigos;
+        } else {
+
+            System.out.println("Los heroes atacan primero");
+            return heroes;
+
         }
-         return heroes;
-        
-        
     }
 
     /**
@@ -94,18 +89,30 @@ public class Batalla {
      * @return
      */
     //ToDo Mejorar ataque.
-    public int ataqueAutomatico(Character[] atacante, Character[] atacado) {
-        int resultado;
-        int antes = vidaColectiva(atacado);
-        for (Character atacante1 : atacante) {
-            for (Character atacado1 : atacado) {
-                atacante1.atacar(atacado1);
+    public void ataqueAutomatico(Character[] atacante, Character[] atacado) {
+        int antes, despues, resultado;
+
+        antes = vidaColectiva(atacado);
+        System.out.println("la salud antes fue " + antes);
+        for (int i = 0; i < atacante.length; i++) {
+            for (int j = 0; j < atacado.length; j++) {
+                atacante[i].atacar(atacado[j]);
             }
         }
-        int despues = vidaColectiva(atacado);
+        despues = vidaColectiva(atacado);
+        System.out.println("La nueva salud es de " + despues);
         resultado = antes - despues;
-        return resultado;
+    }
+
+    public int agiliadColectiva(Character[] personajes) {
+        int agilidadGrupal = 0;
+        for (Character character : personajes) {
+            agilidadGrupal += character.getAgilidad();
+
+        }
+        System.out.println("Agilidad del grup es de " + agilidadGrupal);
+        return agilidadGrupal;
+
     }
 
 }
-

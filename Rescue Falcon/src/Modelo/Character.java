@@ -168,12 +168,14 @@ public class Character {
      * @param mana
      * @param defensa
      * @param ataque
+     * @param agilidad
      *
      * @param heroe
      *
      */
-    public Character(String nombre, int salud, int mana, int defensa, int ataque, boolean heroe) {
+    public Character(String nombre, int salud, int mana, int defensa, int ataque, int agilidad, boolean heroe) {
         this.nombre = nombre;
+        this.agilidad = agilidad;
         this.salud = salud;
         this.saludActual = (int) salud;
         this.energia = mana;
