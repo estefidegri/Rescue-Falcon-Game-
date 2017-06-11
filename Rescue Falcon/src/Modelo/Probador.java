@@ -7,7 +7,7 @@ package Modelo;
 
 /**
  *
- * @author Usuario
+ * @author Estefania
  */
 public class Probador {
 
@@ -23,9 +23,9 @@ public class Probador {
         Character granjero = new Character("Granjero", 100, 1000, 30, 50, 30, true);
         Character ovejero = new Character("Ovejero", 100, 1000, 30, 50, 10, true);
 
-        Character burro = new Character("burro", 100, 1000, 30, 50, 20, true);
-        Character coyote = new Character("coyote", 100, 1000, 30, 50, 70, true);
-        Character gato = new Character("gato", 100, 1000, 30, 50, 40, true);
+        Character burro = new Character("Burro", 100, 1000, 30, 50, 20, true);
+        Character coyote = new Character("Coyote", 100, 1000, 30, 50, 70, true);
+        Character gato = new Character("Gato Negro", 100, 1000, 30, 50, 40, true);
         
         
         heroes[0] = pollito;

@@ -19,8 +19,9 @@ public class Character {
     private boolean muerto;
 
     /**
-     * 
-     * @param agilidad 
+     * El método establece la agilidad del personaje
+     *
+     * @param agilidad agilidad del personaje
      */
     public void setAgilidad(int agilidad) {
         this.agilidad = agilidad;
@@ -28,150 +29,188 @@ public class Character {
     }
 
     /**
-     * 
-     * @return 
+     * El método retorna la agilidad del personaje
+     *
+     * @return agilidad personaje
      */
     public int getAgilidad() {
         return agilidad;
     }
 
     /**
-     * @return the salud
+     * El método retorna el nombre del personaje
+     *
+     * @return nombre del personaje
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * @param nombre he salud to set
+     * El método da un nombre al personaje
+     *
+     * @param nombre nombre del personaje
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * @return the salud
+     * EL método retorna la salud (vida) del personaje
+     *
+     * @return salud es la vida del personaje
      */
     public int getSalud() {
         return salud;
     }
 
     /**
-     * @param salud the salud to set
+     * El método le proporciona la salud al personaje
+     *
+     * @param salud es la vida del personaje
      */
     public void setSalud(int salud) {
         this.salud = salud;
     }
 
     /**
-     * @return the saludActual
+     * El método retorna la salud en un momento determinado de la batalla (puede
+     * ser antes o después).
+     *
+     * @return the saludActual vida actual del personaje
      */
     public int getSaludActual() {
         return saludActual;
     }
 
     /**
-     * @param saludActual the saludActual to set
+     * El método establece la vida actual del personaje
+     *
+     * @param saludActual es la vida actual del personaje
      */
     public void setSaludActual(int saludActual) {
         this.saludActual = saludActual;
     }
 
     /**
-     * @return the energia
+     * El método retorna la energía del personaje
+     *
+     * @return energía del personaje
      */
     public int getEnergia() {
         return energia;
     }
 
     /**
-     * @param energia the energia to set
+     * El método establece la energía al personaje
+     *
+     * @param energia energia del personaje
      */
     public void setEnergia(int energia) {
         this.energia = energia;
     }
 
     /**
-     * @return the energiaActual
+     * El método retorna la energía que posee el personaje en un momento
+     * determinado de la batalla (antes o después).
+     *
+     * @return energiaActual también interpretada como mana
      */
     public int getEnergiaActual() {
         return energiaActual;
     }
 
     /**
-     * @param energiaActual the energiaActual to set
+     * El método establece la energía actual del personaje
+     *
+     * @param energiaActual energía actual (mana)
      */
     public void setEnergiaActual(int energiaActual) {
         this.energiaActual = energiaActual;
     }
 
     /**
-     * @return the defensa
+     * El método retorna la defensa de su personaje
+     *
+     * @return defensa es una habilidad
      */
     public int getDefensa() {
         return defensa;
     }
 
     /**
-     * @param defensa the defensa to set
+     * El método establece la defensa de su personaje
+     *
+     * @param defensa defensa es una habilidad
      */
     public void setDefensa(int defensa) {
         this.defensa = defensa;
     }
 
     /**
-     * @return the ataque
+     * El método retorna el ataque del personaje
+     *
+     * @return ataque es una habilidad
      */
     public int getAtaque() {
         return ataque;
     }
 
     /**
-     * @param ataque the ataque to set
+     * El método establece el ataque del personaje
+     *
+     * @param ataque es una habilidad
      */
     public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
 
     /**
-     * @return the heroe
+     * El método retorna si el personaje es heroe o no
+     *
+     * @return heroe heroe
      */
     public boolean isHeroe() {
         return heroe;
     }
 
     /**
-     * @param heroe the heroe to set
+     * El método establece si es heroe o no
+     *
+     * @param heroe heroe
      */
     public void setHeroe(boolean heroe) {
         this.heroe = heroe;
     }
 
     /**
-     * @return the muerto
+     * El método retorna si el personaje está muerto o no
+     *
+     * @return muerto inhabilitado
      */
     public boolean isMuerto() {
         return muerto;
     }
 
     /**
-     * @param muerto the muerto to set
+     * El método establece si está muerto o no
+     *
+     * @param muerto muerto inhabilitado
      */
     public void setMuerto(boolean muerto) {
         this.muerto = muerto;
     }
 
     /**
-     *
-     * @param nombre
-     * @param salud
-     * @param mana
-     * @param defensa
-     * @param ataque
-     * @param agilidad
-     *
+     * Primer constructor. se mencionan las características y habilidades
+     * de los personajes. 
+     * @param nombre nombre del personaje
+     * @param salud vida del personaje
+     * @param mana energía del personaje
+     * @param defensa habilidad del personaje
+     * @param ataque habilidad del personaje
+     * @param agilidad habilidad del personaje
      * @param heroe
-     *
      */
     public Character(String nombre, int salud, int mana, int defensa, int ataque, int agilidad, boolean heroe) {
         this.nombre = nombre;
@@ -188,7 +227,7 @@ public class Character {
     }
 
     /**
-     * Constructro de mobs
+     * Segundo constructor. Características y habilidades definidas e implementadas.
      *
      * @param personaje personaje a basarse
      */
@@ -205,9 +244,9 @@ public class Character {
     }
 
     /**
-     *
-     * @param atacado
-     * @return
+     * El método muestra toda la estructura para atacar
+     * @param atacado el personaje siendo atacado dentro de la batalla
+     * @return retorna el ataque del heroe como resultado de "atacar"
      */
     public int atacar(Character atacado) {
 
@@ -215,12 +254,12 @@ public class Character {
             if (atacado.isMuerto() == false && this.isMuerto() == false) {
                 atacado.defender(atacado);
                 int resultado = (int) ((Math.random() * this.getAtaque() + 1 / 2 * this.getAtaque()) + this.getAtaque());
-                System.out.println("El ataque fue de " + resultado + " pero " + atacado.getNombre() + " resistio " + atacado.getDefensa());
+                System.out.println("El ataque fue de " + resultado + " pero " + atacado.getNombre() + " resistió " + atacado.getDefensa());
                 if (resultado > atacado.getSalud()) {
                     resultado = atacado.getSalud();
                 }
                 atacado.setSaludActual((int) (atacado.getSaludActual() - (resultado - atacado.getDefensa())));
-                System.out.println("La salud de" + atacado.getNombre() + "  fue de " + atacado.getSaludActual());
+                System.out.println("La salud de" + atacado.getNombre() + " fue de " + atacado.getSaludActual());
 
             }
             System.out.println("-------------------------------------------------------");
@@ -231,19 +270,25 @@ public class Character {
         return 0;
     }
 
+    /**
+     * El método muestra la estructura para defender 
+     * @param atacado el personaje siendo atacado
+     * @return retorna el resultado de la operación matemática para dicha defensa 
+     */
     public int defender(Character atacado) {
-        System.out.println(atacado.getNombre() + " se va a defender y su defensa es  " + atacado.getDefensa());
+        System.out.println(atacado.getNombre() + " se va a defender y su defensa es de " + atacado.getDefensa());
 
         int resultado = (int) ((Math.random() * atacado.getDefensa() + 1 / 2 * atacado.getDefensa()) + atacado.getDefensa());
-        System.out.println(atacado.getNombre() + " se defendio y su defensa ahora es de  " + atacado.getDefensa());
+        System.out.println(atacado.getNombre() + " se defendió y su defensa ahora es de " + atacado.getDefensa());
         atacado.setDefensa(resultado);
         return resultado;
     }
 
     /**
-     *
-     * @param amigo
-     * @return
+     * El método sanar individual consiste en que cada personaje tiene
+     * la capacidad de sanarse a sí mismo 
+     * @param amigo es el personaje de tipo heroe o bueno 
+     * @return inicialmente retorna la vida actual del persona y 0 para la operación.  
      */
     public int sanarIndividual(Character amigo) {
 
@@ -268,9 +313,10 @@ public class Character {
     }
 
     /**
-     *
-     * @param amigo
-     * @return
+     * Cada personaje tiene la capacidad de recuperar su energía pero
+     * sacrificando parte de su vida actual
+     * @param amigo personaje de tipo heroe 
+     * @return retorna la energía actual del personaje amigo o heroe
      */
     public int recuperarEnergia(Character amigo) {
         if (amigo.isHeroe() == this.isHeroe()) {
