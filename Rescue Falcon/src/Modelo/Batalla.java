@@ -6,9 +6,10 @@
 package Modelo;
 
 /**
- * En la clase batalla se implementarán los heroes y villano
- * con sus métodos correspondientes para realizar los enfrentamientos
- * @author Estefania 
+ * En la clase batalla se implementarán los heroes y villano con sus métodos
+ * correspondientes para realizar los enfrentamientos
+ *
+ * @author Estefania
  */
 public class Batalla {
 
@@ -16,9 +17,10 @@ public class Batalla {
     Character[] bestiario = new Character[15];
 
     /**
-     * El método consiste en que un grupo de personajes ataca simultaneamente 
+     * El método consiste en que un grupo de personajes ataca simultaneamente
+     *
      * @param atacante el personaje que atacará
-     * @param matrizEnemigos el grupo de enemigos siendo atacado 
+     * @param matrizEnemigos el grupo de enemigos siendo atacado
      * @return
      */
     private int atacarGrupal(Character atacante, Character[] matrizEnemigos) {
@@ -35,10 +37,11 @@ public class Batalla {
     }
 
     /**
-     * Este método muestra que a partir de las batallas grupales así mismo 
-     * se medirá una vida del grupo, sumando la vida actual de cada integrante 
+     * Este método muestra que a partir de las batallas grupales así mismo se
+     * medirá una vida del grupo, sumando la vida actual de cada integrante
+     *
      * @param matrizEquipo grupo de personajes dentro de la batalla
-     * @return retorna la vida del grupo 
+     * @return retorna la vida del grupo
      */
     private int vidaColectiva(Character[] matrizEquipo) {
         int saludGrupal = 0;
@@ -50,9 +53,10 @@ public class Batalla {
     }
 
     /**
-     * De la misma manera se contará con una energía grupal en las batallas 
+     * De la misma manera se contará con una energía grupal en las batallas
+     *
      * @param matrizEquipo1 grupo de personajes
-     * @return retorna la energía del grupo 
+     * @return retorna la energía del grupo
      */
     private int energiaColectiva(Character[] matrizEquipo1) {
         int energiaGrupal = 0;
@@ -64,14 +68,15 @@ public class Batalla {
     }
 
     /**
-     * El método asigna que gruppo ataca primero 
-     * @param heroes heroes 
-     * @param enemigos villanos 
-     * @return me retorna el ataque de los heroes como primero 
+     * El método asigna que gruppo ataca primero
+     *
+     * @param heroes heroes
+     * @param enemigos villanos
+     * @return me retorna el ataque de los heroes como primero
      */
     public Character[] atacarPrimero(Character[] heroes, Character[] enemigos) {
 
-        if (agiliadColectiva(heroes) < agiliadColectiva(enemigos)) {
+        if (agilidadColectiva(heroes) < agilidadColectiva(enemigos)) {
             System.out.println("Los enemigos atacan primero");
 
             ataqueAutomatico(enemigos, heroes);
@@ -86,39 +91,70 @@ public class Batalla {
 
     /**
      * El método ataque automático sirve sólo para los enemigos
+     *
      * @param atacante personaje que atacará
      * @param atacado personaje siendo atacado
+     * @return daño final
      */
     //ToDo Mejorar ataque.
-    public void ataqueAutomatico(Character[] atacante, Character[] atacado) {
-        int antes, despues, resultado;
+    public int ataqueAutomatico(Character[] atacante, Character[] atacado) {
+        int antes, despues, resultado, daño = 0;
 
         antes = vidaColectiva(atacado);
-        System.out.println("la salud antes fue " + antes);
-        for (int i = 0; i < atacante.length; i++) {
-            for (int j = 0; j < atacado.length; j++) {
-                atacante[i].atacar(atacado[j]);
+        System.out.println("La vida antes era de " + antes);
+
+        daño = dañoColetivo(atacante, atacado);
+
+        for (Character character : atacado) {
+            if (daño > character.getSaludActual()) {
+                character.setSaludActual(0);
+                character.setMuerto(true);
+                System.out.println("El personaje " + character.getNombre() + " ha sido asesinado");
+            } else {
+                character.setSaludActual(character.getSaludActual() - daño);
+                System.out.println("La salud de " + character.getNombre() + " es de " + character.getSaludActual());
             }
         }
         despues = vidaColectiva(atacado);
-        System.out.println("La nueva salud es de " + despues);
+        System.out.println("La nueva vida es de  " + despues);
+
         resultado = antes - despues;
+        System.out.println("El daño final fue de " + resultado);
+        return resultado;
     }
-/**
- * De la misma manera existe una agilidad grupal
- * que también se mide numéricamente 
- * @param personajes personajes
- * @return retorna la agilidad del grupo 
- */
-    public int agiliadColectiva(Character[] personajes) {
+
+    /**
+     * De la misma manera existe una agilidad grupal que también se mide
+     * numéricamente
+     *
+     * @param personajes personajes
+     * @return retorna la agilidad del grupo
+     */
+    public int agilidadColectiva(Character[] personajes) {
         int agilidadGrupal = 0;
         for (Character character : personajes) {
             agilidadGrupal += character.getAgilidad();
 
         }
+
         System.out.println("Agilidad del grup es de " + agilidadGrupal);
         return agilidadGrupal;
 
     }
 
+    /**
+     * Determina el daño colectivo
+     *
+     * @param atacantes atacantes
+     * @param atacados atacados
+     * @return daño
+     */
+    public int dañoColetivo(Character[] atacantes, Character[] atacados) {
+        int daño = 0;
+        for (Character atacante : atacantes) {
+            daño += atacante.getAtaque();
+        }
+        daño = daño / atacados.length;
+        return daño;
+    }
 }

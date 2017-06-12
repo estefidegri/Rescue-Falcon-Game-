@@ -7,36 +7,37 @@ package Modelo;
 
 /**
  *
- * @author Estefania
+ * @author Usuario
  */
 public class Probador {
 
     public static void main(String[] args) {
-
+       
         Batalla combate = new Batalla();
-        Character heroes[] = new Character[3];
-        Character bestiario[] = new Character[14];
-        Character[] enemigos = new Character[3];
+        Character pollito = new Character("Pollito", 1000, 100, 30, 90, 10, true);
+        Character ovejero = new Character("Ovejero ", 1000, 100, 30, 90, 10, true);
+        Character granjero = new Character(" Granjero ", 1000, 100, 30, 90, 10, false);
 
-        // Heroes
-        Character pollito = new Character("Pollito", 100, 1000, 30, 50, 20, true);
-        Character granjero = new Character("Granjero", 100, 1000, 30, 50, 30, true);
-        Character ovejero = new Character("Ovejero", 100, 1000, 30, 50, 10, true);
-
-        Character burro = new Character("Burro", 100, 1000, 30, 50, 20, true);
-        Character coyote = new Character("Coyote", 100, 1000, 30, 50, 70, true);
-        Character gato = new Character("Gato Negro", 100, 1000, 30, 50, 40, true);
+        Character coyote = new Character(pollito);
+        Character gato = new Character(granjero);
+        Character burro = new Character(ovejero);
         
+        Character[] enemigos = new Character[3];
+        Character[] heroes = new Character[3];
         
         heroes[0] = pollito;
-        heroes[1] = granjero;
-        heroes[2] = ovejero;
-
-        enemigos[0] = burro;
-        enemigos[1] = coyote;
-        enemigos[2] = gato;
-
+        heroes[1] = ovejero;
+        heroes[2] = granjero;
+        enemigos[0] = coyote;
+        enemigos[1] = gato;
+        enemigos[2] = burro;
         
+
+      
+        combate.ataqueAutomatico(enemigos, heroes);
+    
+       
+      
 
     }
 

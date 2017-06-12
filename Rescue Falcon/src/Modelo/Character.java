@@ -202,23 +202,24 @@ public class Character {
     }
 
     /**
-     * Primer constructor. se mencionan las características y habilidades
-     * de los personajes. 
+     * Primer constructor. se mencionan las características y habilidades de los
+     * personajes.
+     *
      * @param nombre nombre del personaje
      * @param salud vida del personaje
-     * @param mana energía del personaje
-     * @param defensa habilidad del personaje
-     * @param ataque habilidad del personaje
-     * @param agilidad habilidad del personaje
+     * @param energia energía del personaje
+     * @param defensa defensa del personaje
+     * @param ataque ataque del personaje
+     * @param agilidad agilidad del personaje
      * @param heroe
      */
-    public Character(String nombre, int salud, int mana, int defensa, int ataque, int agilidad, boolean heroe) {
+    public Character(String nombre, int salud, int energia, int defensa, int ataque, int agilidad, boolean heroe) {
         this.nombre = nombre;
         this.agilidad = agilidad;
         this.salud = salud;
         this.saludActual = (int) salud;
-        this.energia = mana;
-        this.energiaActual = mana;
+        this.energia = energia;
+        this.energiaActual = energia;
         this.defensa = defensa;
         this.ataque = ataque;
         this.heroe = heroe;
@@ -227,7 +228,8 @@ public class Character {
     }
 
     /**
-     * Segundo constructor. Características y habilidades definidas e implementadas.
+     * Segundo constructor. Características y habilidades definidas e
+     * implementadas.
      *
      * @param personaje personaje a basarse
      */
@@ -245,6 +247,7 @@ public class Character {
 
     /**
      * El método muestra toda la estructura para atacar
+     *
      * @param atacado el personaje siendo atacado dentro de la batalla
      * @return retorna el ataque del heroe como resultado de "atacar"
      */
@@ -262,7 +265,6 @@ public class Character {
                 System.out.println("La salud de" + atacado.getNombre() + " fue de " + atacado.getSaludActual());
 
             }
-            System.out.println("-------------------------------------------------------");
 
             return this.getAtaque();
         }
@@ -271,24 +273,29 @@ public class Character {
     }
 
     /**
-     * El método muestra la estructura para defender 
+     * El método muestra la estructura para defender
+     *
      * @param atacado el personaje siendo atacado
-     * @return retorna el resultado de la operación matemática para dicha defensa 
+     * @return retorna el resultado de la operación matemática para dicha
+     * defensa
      */
     public int defender(Character atacado) {
         System.out.println(atacado.getNombre() + " se va a defender y su defensa es de " + atacado.getDefensa());
 
         int resultado = (int) ((Math.random() * atacado.getDefensa() + 1 / 2 * atacado.getDefensa()) + atacado.getDefensa());
-        System.out.println(atacado.getNombre() + " se defendió y su defensa ahora es de " + atacado.getDefensa());
+
         atacado.setDefensa(resultado);
+        System.out.println(atacado.getNombre() + " se defendió y su defensa ahora es de " + atacado.getDefensa());
         return resultado;
     }
 
     /**
-     * El método sanar individual consiste en que cada personaje tiene
-     * la capacidad de sanarse a sí mismo 
-     * @param amigo es el personaje de tipo heroe o bueno 
-     * @return inicialmente retorna la vida actual del persona y 0 para la operación.  
+     * El método sanar individual consiste en que cada personaje tiene la
+     * capacidad de sanarse a sí mismo
+     *
+     * @param amigo es el personaje de tipo heroe o bueno
+     * @return inicialmente retorna la vida actual del persona y 0 para la
+     * operación.
      */
     public int sanarIndividual(Character amigo) {
 
@@ -307,7 +314,7 @@ public class Character {
             }
 
             System.out.println("El personaje " + amigo.getNombre() + " es un enemigo");
-            System.out.println("-------------------------------------------------------");
+
         }
         return 0;
     }
@@ -315,7 +322,8 @@ public class Character {
     /**
      * Cada personaje tiene la capacidad de recuperar su energía pero
      * sacrificando parte de su vida actual
-     * @param amigo personaje de tipo heroe 
+     *
+     * @param amigo personaje de tipo heroe
      * @return retorna la energía actual del personaje amigo o heroe
      */
     public int recuperarEnergia(Character amigo) {
