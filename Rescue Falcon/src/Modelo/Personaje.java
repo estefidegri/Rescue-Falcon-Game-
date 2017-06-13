@@ -5,7 +5,7 @@ package Modelo;
  *
  * @author Estefania
  */
-public class Character {
+public class Personaje {
 
     private String nombre = "";
     private int salud;
@@ -213,7 +213,7 @@ public class Character {
      * @param agilidad agilidad del personaje
      * @param heroe
      */
-    public Character(String nombre, int salud, int energia, int defensa, int ataque, int agilidad, boolean heroe) {
+    public Personaje(String nombre, int salud, int energia, int defensa, int ataque, int agilidad, boolean heroe) {
         this.nombre = nombre;
         this.agilidad = agilidad;
         this.salud = salud;
@@ -233,15 +233,17 @@ public class Character {
      *
      * @param personaje personaje a basarse
      */
-    public Character(Character personaje) {
-        this.salud = personaje.getSalud() + personaje.getSalud() + 1 / 4;
+    public Personaje(Personaje personaje) {
+        this.salud = personaje.getSalud() + personaje.getSalud() * 1 / 4;
         this.saludActual = this.salud;
         this.energia = personaje.getEnergia() + personaje.getEnergia() * 1 / 4;
         this.energiaActual = this.energia;
         this.defensa = personaje.getDefensa() + personaje.getDefensa() * 1 / 4;
         this.ataque = personaje.getAtaque() + personaje.getAtaque() * 1 / 4;
+        this.agilidad = personaje.getAgilidad() +personaje.getAgilidad() * 1/4;
         this.heroe = false;
         this.muerto = false;
+        this.nombre = "test";
 
     }
 
@@ -251,7 +253,7 @@ public class Character {
      * @param atacado el personaje siendo atacado dentro de la batalla
      * @return retorna el ataque del heroe como resultado de "atacar"
      */
-    public int atacar(Character atacado) {
+    public int atacar(Personaje atacado) {
 
         if (atacado.isHeroe() != this.isHeroe()) {
             if (atacado.isMuerto() == false && this.isMuerto() == false) {
@@ -279,7 +281,7 @@ public class Character {
      * @return retorna el resultado de la operación matemática para dicha
      * defensa
      */
-    public int defender(Character atacado) {
+    public int defender(Personaje atacado) {
         System.out.println(atacado.getNombre() + " se va a defender y su defensa es de " + atacado.getDefensa());
 
         int resultado = (int) ((Math.random() * atacado.getDefensa() + 1 / 2 * atacado.getDefensa()) + atacado.getDefensa());
@@ -297,7 +299,7 @@ public class Character {
      * @return inicialmente retorna la vida actual del persona y 0 para la
      * operación.
      */
-    public int sanarIndividual(Character amigo) {
+    public int sanarIndividual(Personaje amigo) {
 
         if (amigo.isHeroe() == this.isHeroe()) {
             if (amigo.isMuerto() == false) {
@@ -326,7 +328,7 @@ public class Character {
      * @param amigo personaje de tipo heroe
      * @return retorna la energía actual del personaje amigo o heroe
      */
-    public int recuperarEnergia(Character amigo) {
+    public int recuperarEnergia(Personaje amigo) {
         if (amigo.isHeroe() == this.isHeroe()) {
             if (amigo.isMuerto() == false) {
                 if (amigo.getSaludActual() > 0) {

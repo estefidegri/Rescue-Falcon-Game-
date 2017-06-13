@@ -13,8 +13,8 @@ package Modelo;
  */
 public class Batalla {
 
-    Character[] heroes = new Character[5];
-    Character[] bestiario = new Character[15];
+    Personaje[] heroes = new Personaje[5];
+    Personaje[] bestiario = new Personaje[15];
 
     /**
      * El método consiste en que un grupo de personajes ataca simultaneamente
@@ -23,10 +23,10 @@ public class Batalla {
      * @param matrizEnemigos el grupo de enemigos siendo atacado
      * @return
      */
-    private int atacarGrupal(Character atacante, Character[] matrizEnemigos) {
+    private int atacarGrupal(Personaje atacante, Personaje[] matrizEnemigos) {
         int antes, despues, resultado;
         antes = vidaColectiva(matrizEnemigos);
-        for (Character enemigo : matrizEnemigos) {
+        for (Personaje enemigo : matrizEnemigos) {
             if (atacante.isHeroe() != enemigo.isHeroe()) {
                 atacante.atacar(enemigo);
             }
@@ -43,9 +43,9 @@ public class Batalla {
      * @param matrizEquipo grupo de personajes dentro de la batalla
      * @return retorna la vida del grupo
      */
-    private int vidaColectiva(Character[] matrizEquipo) {
+    private int vidaColectiva(Personaje[] matrizEquipo) {
         int saludGrupal = 0;
-        for (Character character : matrizEquipo) {
+        for (Personaje character : matrizEquipo) {
             saludGrupal += character.getSaludActual();
         }
 
@@ -58,9 +58,9 @@ public class Batalla {
      * @param matrizEquipo1 grupo de personajes
      * @return retorna la energía del grupo
      */
-    private int energiaColectiva(Character[] matrizEquipo1) {
+    private int energiaColectiva(Personaje[] matrizEquipo1) {
         int energiaGrupal = 0;
-        for (Character character : matrizEquipo1) {
+        for (Personaje character : matrizEquipo1) {
             energiaGrupal += character.getEnergiaActual();
 
         }
@@ -74,7 +74,7 @@ public class Batalla {
      * @param enemigos villanos
      * @return me retorna el ataque de los heroes como primero
      */
-    public Character[] atacarPrimero(Character[] heroes, Character[] enemigos) {
+    public Personaje[] atacarPrimero(Personaje[] heroes, Personaje[] enemigos) {
 
         if (agilidadColectiva(heroes) < agilidadColectiva(enemigos)) {
             System.out.println("Los enemigos atacan primero");
@@ -97,7 +97,7 @@ public class Batalla {
      * @return daño final
      */
     //ToDo Mejorar ataque.
-    public int ataqueAutomatico(Character[] atacante, Character[] atacado) {
+    public int ataqueAutomatico(Personaje[] atacante, Personaje[] atacado) {
         int antes, despues, resultado, daño = 0;
 
         antes = vidaColectiva(atacado);
@@ -105,7 +105,7 @@ public class Batalla {
 
         daño = dañoColetivo(atacante, atacado);
 
-        for (Character character : atacado) {
+        for (Personaje character : atacado) {
             if (daño > character.getSaludActual()) {
                 character.setSaludActual(0);
                 character.setMuerto(true);
@@ -130,9 +130,9 @@ public class Batalla {
      * @param personajes personajes
      * @return retorna la agilidad del grupo
      */
-    public int agilidadColectiva(Character[] personajes) {
+    public int agilidadColectiva(Personaje[] personajes) {
         int agilidadGrupal = 0;
-        for (Character character : personajes) {
+        for (Personaje character : personajes) {
             agilidadGrupal += character.getAgilidad();
 
         }
@@ -149,12 +149,16 @@ public class Batalla {
      * @param atacados atacados
      * @return daño
      */
-    public int dañoColetivo(Character[] atacantes, Character[] atacados) {
+    public int dañoColetivo(Personaje[] atacantes, Personaje[] atacados) {
         int daño = 0;
-        for (Character atacante : atacantes) {
+        for (Personaje atacante : atacantes) {
             daño += atacante.getAtaque();
         }
         daño = daño / atacados.length;
         return daño;
     }
-}
+
+        
+
+    }
+

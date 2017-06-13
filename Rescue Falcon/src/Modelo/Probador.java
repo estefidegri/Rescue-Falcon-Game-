@@ -12,33 +12,31 @@ package Modelo;
 public class Probador {
 
     public static void main(String[] args) {
-       
-        Batalla combate = new Batalla();
-        Character pollito = new Character("Pollito", 1000, 100, 30, 90, 10, true);
-        Character ovejero = new Character("Ovejero ", 1000, 100, 30, 90, 10, true);
-        Character granjero = new Character(" Granjero ", 1000, 100, 30, 90, 10, false);
 
-        Character coyote = new Character(pollito);
-        Character gato = new Character(granjero);
-        Character burro = new Character(ovejero);
-        
-        Character[] enemigos = new Character[3];
-        Character[] heroes = new Character[3];
-        
+        Batalla combate = new Batalla();
+        Personaje pollito = new Personaje("Pollito", 1000, 100, 30, 100, 10, true);
+        Personaje ovejero = new Personaje("Ovejero ", 1000, 100, 30, 90, 10, true);
+        Personaje granjero = new Personaje(" Granjero ", 1000, 100, 30, 90, 10, false);
+
+        Personaje coyote = new Personaje(pollito);
+        Personaje gato = new Personaje(granjero);
+        Personaje burro = new Personaje(ovejero);
+
+        Personaje[] enemigos = new Personaje[3];
+        Personaje[] heroes = new Personaje[7];
+
         heroes[0] = pollito;
         heroes[1] = ovejero;
         heroes[2] = granjero;
-        enemigos[0] = coyote;
-        enemigos[1] = gato;
-        enemigos[2] = burro;
-        
+        heroes[3] = coyote;
+        heroes[5] = gato;
+        heroes[6] = burro;
+//        enemigos[0] = coyote;
+//        enemigos[1] = gato;
+//        enemigos[2] = burro;
+//        
 
-      
-        combate.ataqueAutomatico(enemigos, heroes);
-    
        
-      
 
     }
-
 }
