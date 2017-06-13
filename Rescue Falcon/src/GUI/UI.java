@@ -26,8 +26,6 @@ public class UI extends javax.swing.JFrame {
         porkyName.setText(porky.getNombre());
         startGame();
         inicioCombate(heroes, enemigos);
-        
-        
 
     }
 
@@ -78,7 +76,7 @@ public class UI extends javax.swing.JFrame {
         heroe1Life = new javax.swing.JLabel();
         heroe0Life = new javax.swing.JLabel();
         heroe2Life = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        atacar0 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -270,10 +268,20 @@ public class UI extends javax.swing.JFrame {
         heroe2Life.setText("jLabel2");
         Battle.add(heroe2Life, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 80, -1, -1));
 
-        jButton4.setText("Atacar");
-        Battle.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+        atacar0.setText("Atacar");
+        atacar0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atacar0ActionPerformed(evt);
+            }
+        });
+        Battle.add(atacar0, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
         jButton5.setText("Atacar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         Battle.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, -1));
 
         jButton6.setText("atacar");
@@ -310,6 +318,14 @@ public class UI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void atacar0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atacar0ActionPerformed
+        atacar(heroes[0], enemigos[0]);
+    }//GEN-LAST:event_atacar0ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -351,7 +367,7 @@ public class UI extends javax.swing.JFrame {
         heroesIconos[0] = cabrote;
         heroesIconos[1] = puerquito;
         heroesIconos[2] = gatico;
-        
+
         bestiario[0] = jefe01;
         bestiario[1] = jefe02;
         bestiario[2] = jefe03;
@@ -407,48 +423,45 @@ public class UI extends javax.swing.JFrame {
         for (int i = 0; i < heroesBarra.length; i++) {
             heroesBarra[i].setText(heroes[i].getNombre());
             heroesSalud[i].setText(heroes[i].getSaludActual() + "/" + heroes[i].getSalud());
-            
-           
+
         }
-        
+
         for (int i = 0; i < heroesIconos.length; i++) {
             heroesIconos[i].setText(heroes[i].getNombre());
         }
     }
 
-    
-    
     public void atacar(Personaje atacante, Personaje atacado) {
-    atacante.atacar(atacado);
-        for (int i = 0; i < heroesSalud.length; i++) {
-            heroesSalud[i].setText(heroes[i].getSaludActual() + "/" + heroes[i].getSalud());
-       }
-    
-    
+        atacante.atacar(atacado);
+        for (int i = 0; i < villanosSalud.length; i++) {
+            villanosSalud[i].setText(enemigos[i].getSaludActual() + "/" + enemigos[i].getSalud());
+        }
+
     }
-    public void atacar(Personaje [] heroes, Personaje[] enemigos) {
-    combate.atacarPrimero(heroes, enemigos);
-    
+
+    public void atacar(Personaje[] heroes, Personaje[] enemigos) {
+        combate.atacarPrimero(heroes, enemigos);
+
     }
+
     /**
-     * 
+     *
      * @param heroes
      * @param enemigos
-     * @return 
+     * @return
      */
-    public void inicioCombate(Personaje [] heroes, Personaje[]enemigos){
-    combate.atacarPrimero(heroes, enemigos);
-        if (combate.agilidadColectiva(enemigos) > combate.agilidadColectiva(heroes) ) {
+    public void inicioCombate(Personaje[] heroes, Personaje[] enemigos) {
+        combate.atacarPrimero(heroes, enemigos);
+        if (combate.agilidadColectiva(enemigos) > combate.agilidadColectiva(heroes)) {
             for (int i = 0; i < heroesSalud.length; i++) {
                 heroesSalud[i].setText(heroes[i].getSaludActual() + "/" + heroes[i].getSalud());
             }
-            
+
             Estatus.setText("¡Los enemigos son mas agiles, ten cuidado, atacaran primero!");
         }
-            
-        
+
     }
-            
+
     /**
      * Seleccionador
      *
@@ -495,7 +508,7 @@ public class UI extends javax.swing.JFrame {
     Personaje porky = new Personaje("Porky", 1000, 250, 40, 85, 20, true);
     Personaje gato = new Personaje("Misifu", 1000, 250, 40, 85, 20, true);
     Personaje cabrota = new Personaje("Bee-bee", 1000, 250, 40, 85, 50, true);
-    Personaje debil = new Personaje("Jefe", 500, 1, 1,10, 10, false);
+    Personaje debil = new Personaje("Jefe", 500, 1, 1, 10, 10, false);
     Personaje jefe01 = new Personaje(debil);
     Personaje jefe02 = new Personaje(jefe01);
     Personaje jefe03 = new Personaje(jefe02);
@@ -522,6 +535,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JLabel CabraName4;
     private javax.swing.JLabel CabraName5;
     private javax.swing.JLabel Estatus;
+    private javax.swing.JButton atacar0;
     private javax.swing.JProgressBar badGuysBar;
     private javax.swing.JPanel cabra1;
     private javax.swing.JLabel cabrote;
@@ -544,7 +558,6 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel0;

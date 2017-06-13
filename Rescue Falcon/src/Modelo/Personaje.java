@@ -240,7 +240,7 @@ public class Personaje {
         this.energiaActual = this.energia;
         this.defensa = personaje.getDefensa() + personaje.getDefensa() * 1 / 4;
         this.ataque = personaje.getAtaque() + personaje.getAtaque() * 1 / 4;
-        this.agilidad = personaje.getAgilidad() +personaje.getAgilidad() * 1/4;
+        this.agilidad = personaje.getAgilidad() + personaje.getAgilidad() * 1 / 4;
         this.heroe = false;
         this.muerto = false;
         this.nombre = "test";
@@ -260,18 +260,35 @@ public class Personaje {
                 atacado.defender(atacado);
                 int resultado = (int) ((Math.random() * this.getAtaque() + 1 / 2 * this.getAtaque()) + this.getAtaque());
                 System.out.println("El ataque fue de " + resultado + " pero " + atacado.getNombre() + " resistió " + atacado.getDefensa());
-                if (resultado > atacado.getSalud()) {
-                    resultado = atacado.getSalud();
-                }
-                atacado.setSaludActual((int) (atacado.getSaludActual() - (resultado - atacado.getDefensa())));
-                System.out.println("La salud de" + atacado.getNombre() + " fue de " + atacado.getSaludActual());
+                if (resultado > atacado.getSaludActual()) {
+                    atacado.setSaludActual(0);
 
+                } else {
+                    atacado.setSaludActual((int) (atacado.getSaludActual() - (resultado - atacado.getDefensa())));
+                    System.out.println("La salud de" + atacado.getNombre() + " fue de " + atacado.getSaludActual());
+                }
             }
 
             return this.getAtaque();
         }
 
         return 0;
+    }
+
+    /**
+     *
+     * @param atacado
+     */
+    public void matar(Personaje atacado) {
+        atacado.setAgilidad(0);
+        atacado.setAtaque(0);
+        atacado.setDefensa(0);
+        atacado.setEnergia(0);
+        atacado.setSalud(0);
+        atacado.setMuerto(true);
+        atacado.setSaludActual(0);
+        atacado.setEnergiaActual(0);
+
     }
 
     /**
@@ -282,13 +299,8 @@ public class Personaje {
      * defensa
      */
     public int defender(Personaje atacado) {
-        System.out.println(atacado.getNombre() + " se va a defender y su defensa es de " + atacado.getDefensa());
-
-        int resultado = (int) ((Math.random() * atacado.getDefensa() + 1 / 2 * atacado.getDefensa()) + atacado.getDefensa());
-
-        atacado.setDefensa(resultado);
-        System.out.println(atacado.getNombre() + " se defendió y su defensa ahora es de " + atacado.getDefensa());
-        return resultado;
+        atacado.setDefensa((int) (Math.random() * atacado.getDefensa() + 1 / 2 * atacado.getDefensa()) + atacado.getDefensa());
+        return atacado.getDefensa();
     }
 
     /**
