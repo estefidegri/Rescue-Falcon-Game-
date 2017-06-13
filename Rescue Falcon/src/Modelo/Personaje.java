@@ -276,7 +276,7 @@ public class Personaje {
     }
 
     /**
-     *
+     * El método matar sirve para acabar finalmente 1 de las batallas
      * @param atacado
      */
     public void matar(Personaje atacado) {

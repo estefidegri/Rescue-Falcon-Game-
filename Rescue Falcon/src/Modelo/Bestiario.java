@@ -6,7 +6,8 @@
 package Modelo;
 
 /**
- *
+ * Esta clase no es obligatoria por que ya existe un arreglo de 15 
+ * elementos para crear los villanos 
  * @author tania
  */
 public class Bestiario extends javax.swing.JFrame {

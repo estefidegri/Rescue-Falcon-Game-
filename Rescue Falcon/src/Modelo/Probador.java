@@ -6,11 +6,15 @@
 package Modelo;
 
 /**
- *
- * @author Usuario
+ * La clase probador sirve para crear el método main 
+ * @author Estefania
  */
 public class Probador {
-
+    
+/**
+ * En el main se realizan los llamados de los objetos "personaje" 
+ * @param args 
+ */
     public static void main(String[] args) {
 
         Batalla combate = new Batalla();

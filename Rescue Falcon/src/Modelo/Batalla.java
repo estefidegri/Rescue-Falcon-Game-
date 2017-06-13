@@ -6,9 +6,9 @@
 package Modelo;
 
 /**
- * En la clase batalla se implementarán los heroes y villano con sus métodos
+ * En la clase batalla se implementarán los heroes y villanos con sus métodos
  * correspondientes para realizar los enfrentamientos
- *
+ * Se cumple el requisito de crear 15 villanos en un arreglo (bestiario)
  * @author Estefania
  */
 public class Batalla {
@@ -17,8 +17,8 @@ public class Batalla {
     Personaje[] bestiario = new Personaje[15];
 
     /**
-     * El método consiste en que un grupo de personajes ataca simultaneamente
-     *
+     * El método consiste en que 2 grupos de personajes se atacan de manera 
+     * simultanea
      * @param atacante el personaje que atacará
      * @param matrizEnemigos el grupo de enemigos siendo atacado
      * @return
@@ -37,8 +37,8 @@ public class Batalla {
     }
 
     /**
-     * Este método muestra que a partir de las batallas grupales así mismo se
-     * medirá una vida del grupo, sumando la vida actual de cada integrante
+     * Este método muestra que a partir de las batallas grupales  se
+     * medirá la vida del grupo, sumando la vida actual de cada integrante.
      *
      * @param matrizEquipo grupo de personajes dentro de la batalla
      * @return retorna la vida del grupo
@@ -94,7 +94,7 @@ public class Batalla {
      *
      * @param atacante personaje que atacará
      * @param atacado personaje siendo atacado
-     * @return daño final
+     * @return daño final a través de una resta
      */
     //ToDo Mejorar ataque.
     public int ataqueAutomatico(Personaje[] atacante, Personaje[] atacado) {
@@ -145,8 +145,8 @@ public class Batalla {
     /**
      * Determina el daño colectivo
      *
-     * @param atacantes atacantes
-     * @param atacados atacados
+     * @param atacantes quienes atacrán
+     * @param atacados personajes siendo atacados
      * @return daño
      */
     public int dañoColetivo(Personaje[] atacantes, Personaje[] atacados) {

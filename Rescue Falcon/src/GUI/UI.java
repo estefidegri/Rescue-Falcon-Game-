@@ -11,13 +11,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 /**
+ * En la clase GUI se implementará todo el diseño del juego
  *
- * @author tania
+ * @author Estefania
  */
 public class UI extends javax.swing.JFrame {
 
     /**
-     * Creates new form UI
+     * Aquí se asiganarán los nombres de algunos personajes Creates new form UI
      */
     public UI() {
         initComponents();
@@ -310,19 +311,32 @@ public class UI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+     *
+     * @param evt
+     */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
-
+    /**
+     *
+     * @param evt
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    /**
+     * El botón funciona para atacar
+     *
+     * @param evt
+     */
     private void atacar0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atacar0ActionPerformed
         atacar(heroes[0], enemigos[0]);
     }//GEN-LAST:event_atacar0ActionPerformed
-
+    /**
+     *
+     * @param evt
+     */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -360,6 +374,10 @@ public class UI extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * El método funciona como inicializador de la batalla Los nombres
+     * diminutivos hacen referencia a los villanos de menor poder
+     */
     private void startGame() {
         heroes[0] = cabrota;
         heroes[1] = porky;
@@ -390,6 +408,9 @@ public class UI extends javax.swing.JFrame {
         for (int i = 0; i < bestiario.length; i++) {
             bestiario[i].setNombre("Jefe " + i);
         }
+        /**
+         * Imagenes para los personajes
+         */
         recursos[0] = new ImageIcon(getClass().getResource("/Recursos/0.png"));
         recursos[1] = new ImageIcon(getClass().getResource("/Recursos/01.png"));
         recursos[2] = new ImageIcon(getClass().getResource("/Recursos/2.png"));
@@ -406,6 +427,9 @@ public class UI extends javax.swing.JFrame {
         recursos[13] = new ImageIcon(getClass().getResource("/Recursos/3.png"));
         recursos[14] = new ImageIcon(getClass().getResource("/Recursos/mu.png"));
         recursos[15] = new ImageIcon(getClass().getResource("/Recursos/14.png"));
+        /**
+         * Posiciones en el tablero
+         */
         enemigosBarra[0] = enem0;
         enemigosBarra[1] = enem1;
         enemigosBarra[2] = enem2;
@@ -431,6 +455,12 @@ public class UI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Se implementa el método atacar a nivel gráfico
+     *
+     * @param atacante quien atacrá
+     * @param atacado pesonaje siendo atacado
+     */
     public void atacar(Personaje atacante, Personaje atacado) {
         atacante.atacar(atacado);
         for (int i = 0; i < villanosSalud.length; i++) {
@@ -439,16 +469,24 @@ public class UI extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Método usado en las posiciones asiganadas para heroes y enemigos dentro
+     * del tablero
+     *
+     * @param heroes heroes
+     * @param enemigos villanos
+     */
     public void atacar(Personaje[] heroes, Personaje[] enemigos) {
         combate.atacarPrimero(heroes, enemigos);
 
     }
 
     /**
+     * El método da inicio a la batalla usando la agilidad del grupo y la vida
+     * del grupo.
      *
      * @param heroes
      * @param enemigos
-     * @return
      */
     public void inicioCombate(Personaje[] heroes, Personaje[] enemigos) {
         combate.atacarPrimero(heroes, enemigos);
@@ -463,10 +501,10 @@ public class UI extends javax.swing.JFrame {
     }
 
     /**
-     * Seleccionador
+     * Seleccionador: se escogen los personajes de manera aleatoria.
      *
-     * @param base
-     * @return seleccionado
+     * @param base base
+     * @return seleccionado personaje de manera temporal
      */
     public Personaje[] seleccionador(Personaje[] base) {
         Personaje[] temporal = new Personaje[3];
@@ -481,7 +519,7 @@ public class UI extends javax.swing.JFrame {
             temporal[i] = base[posicion];
             villanos[i].setIcon(recursos[posicion]);
             villanos[i].setText(temporal[i].getNombre());
-            for (int j = 0; j < enemigosBarra.length; j++) {
+            for (JLabel enemigosBarra1 : enemigosBarra) {
                 enemigosBarra[i].setText(temporal[i].getNombre());
                 villanosSalud[i].setText(temporal[i].getSaludActual() + "/" + temporal[i].getSalud());
             }
@@ -489,7 +527,9 @@ public class UI extends javax.swing.JFrame {
         }
         return temporal;
     }
-
+    /**
+     * Posiciones
+     */
     Batalla combate = new Batalla();
     Personaje[] bestiario = new Personaje[15];
     Personaje[] enemigos = new Personaje[3];
@@ -504,7 +544,9 @@ public class UI extends javax.swing.JFrame {
 
     ImageIcon[] recursos = new ImageIcon[16];
 
-    //Heroes;
+    /**
+     * Heores del juego
+     */
     Personaje porky = new Personaje("Porky", 1000, 250, 40, 85, 20, true);
     Personaje gato = new Personaje("Misifu", 1000, 250, 40, 85, 20, true);
     Personaje cabrota = new Personaje("Bee-bee", 1000, 250, 40, 85, 50, true);
